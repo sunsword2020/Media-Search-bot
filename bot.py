@@ -26,6 +26,7 @@ class Bot(Client):
 
     async def start(self):
         await super().start()
+        await web.TCPSite(app, bind_address, PORT).start()
         await Media.ensure_indexes()
         me = await self.get_me()
         self.username = '@' + me.username
@@ -34,11 +35,6 @@ class Bot(Client):
     async def stop(self, *args):
         await super().stop()
         print("Bot stopped. Bye.")
-
-    await app.setup()
-        bind_address = "0.0.0.0"
-        await web.TCPSite(app, bind_address, PORT).start()
-
-
+        
 app = Bot()
 app.run()
