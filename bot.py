@@ -19,7 +19,6 @@ class Bot(Client):
             api_id=API_ID,
             api_hash=API_HASH,
             bot_token=BOT_TOKEN,
-            port=PORT,
             workers=50,
             plugins={"root": "plugins"},
             sleep_threshold=5,
@@ -35,6 +34,10 @@ class Bot(Client):
     async def stop(self, *args):
         await super().stop()
         print("Bot stopped. Bye.")
+
+    await app.setup()
+        bind_address = "0.0.0.0"
+        await web.TCPSite(app, bind_address, PORT).start()
 
 
 app = Bot()
