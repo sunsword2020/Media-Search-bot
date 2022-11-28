@@ -8,7 +8,7 @@ logging.getLogger().setLevel(logging.WARNING)
 from pyrogram import Client, __version__
 from pyrogram.raw.all import layer
 from utils import Media
-from info import SESSION, API_ID, API_HASH, BOT_TOKEN
+from info import SESSION, API_ID, API_HASH, BOT_TOKEN, PORT
 
 
 class Bot(Client):
@@ -19,6 +19,7 @@ class Bot(Client):
             api_id=API_ID,
             api_hash=API_HASH,
             bot_token=BOT_TOKEN,
+            port=PORT,
             workers=50,
             plugins={"root": "plugins"},
             sleep_threshold=5,
